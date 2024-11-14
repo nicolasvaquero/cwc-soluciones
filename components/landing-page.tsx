@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { Zap, Phone, Mail, MapPin, Clock, CheckCircle, Star, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 export function LandingPageComponent() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -94,10 +93,12 @@ export function LandingPageComponent() {
                 >
                   {slides.map((slide, index) => (
                     <div key={index} className="w-full flex-shrink-0">
-                      <img
+                      <Image
                         src={slide.src}
                         alt={slide.alt}
-                        className="w-full h-[400px] object-contain bg-black/5"
+                        fill
+                        className="object-contain bg-black/5"
+                        sizes="(max-width: 768px) 100vw, 800px"
                       />
                     </div>
                   ))}
@@ -170,7 +171,7 @@ export function LandingPageComponent() {
                       <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="mb-2">"{recommendation.comment}"</p>
+                  <p className="mb-2">&ldquo;{recommendation.comment}&rdquo;</p>
                   <p className="font-semibold">{recommendation.name}</p>
                 </div>
               ))}
